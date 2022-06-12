@@ -1,8 +1,11 @@
 class Game {
     constructor() {
-        this.pipe = new Pipe();
         this.mario = new Mario();
-        this.koopa = new Koopa();
+
+        this.enemies = [
+            new Pipe(),
+            new Koopa()
+        ]
 
         this.thread = null;
 
@@ -16,33 +19,32 @@ class Game {
 
     endGame() {
         this.mario.die();
-        this.pipe.stop();
-        this.koopa.stop();
-        
+        this.enemies.forEach(enemie => enemie.stop());        
         clearInterval(this.thread);
     }
 
-    touchedPipe() {
-        if (this.pipe.scoreZone()) {
-            return this.mario.getJumpHeight() <= this.pipe.getHeight();
-        }
+    hasTouched() {
+        var touched = false;
 
-        if (this.koopa.scoreZone()) {
-            return this.mario.getJumpHeight() <= this.koopa.getHeight();
-        }
+        this.enemies.forEach((enemie) => {
+            if (enemie.scoreZone()) {
+                touched = this.mario.getJumpHeight() <= enemie.getHeight();
+            }
+        });
 
-        return false;
+        return touched;
+
+        
     }
 
     start() {
         console.log('game start...');
         this.mario.reset();
 
-        this.pipe.move();
-        this.koopa.move();
+        this.enemies.forEach(enemie => enemie.move());
 
         this.thread = setInterval(() => {
-            if (this.touchedPipe()) {
+            if (this.hasTouched()) {
                 this.endGame();
             }
         }, 10);

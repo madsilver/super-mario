@@ -6,7 +6,7 @@
 }
 
 .koopa-move {
-    animation: koopa-animation 1.5s infinite linear;
+    animation: koopa-animation 2s infinite linear;
 }
 
 @keyframes koopa-animation {
