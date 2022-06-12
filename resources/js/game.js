@@ -1,13 +1,12 @@
 class Game {
     constructor() {
-        this.mario = new Mario();
-
         this.enemies = [
+            new Pipe(),
             new Pipe(),
             new Koopa()
         ]
 
-        this.thread = null;
+        this.mario = new Mario();
 
         window.addEventListener('keypress', (e) => {
             if (e.key == "Enter") {
@@ -20,7 +19,6 @@ class Game {
     endGame() {
         this.mario.die();
         this.enemies.forEach(enemie => enemie.stop());        
-        clearInterval(this.thread);
     }
 
     hasTouched() {
@@ -33,19 +31,17 @@ class Game {
         });
 
         return touched;
-
-        
     }
 
     start() {
-        console.log('game start...');
-        this.mario.reset();
+        this.mario.reboot();
 
         this.enemies.forEach(enemie => enemie.move());
 
-        this.thread = setInterval(() => {
+        const loop = setInterval(() => {
             if (this.hasTouched()) {
                 this.endGame();
+                clearInterval(loop);
             }
         }, 10);
     }

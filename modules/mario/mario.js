@@ -47,7 +47,7 @@ class Mario extends Core {
         this.removeClass('jump');
     }
 
-    reset() {
+    reboot() {
         this.died = false;
         this.elem.style.bottom = '0px';
         this.walk();
