@@ -1,0 +1,10 @@
+.clouds {
+    width: 450px;
+    position: absolute;
+    animation: clouds-animation 50s infinite linear;
+}
+
+@keyframes clouds-animation {
+    from { right: -450px; }
+    to { right: 100%; }
+}

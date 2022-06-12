@@ -1,0 +1,15 @@
+.pipe {
+    position: absolute;
+    bottom: 0;
+    width: 80px;
+    right: -80px;
+}
+
+.pipe-move {
+    animation: pipe-animation 2s infinite linear;
+}
+
+@keyframes pipe-animation {
+    from { right: -80px; }
+    to { right: 100%; }
+}

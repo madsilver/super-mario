@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./resources/css/style.css">
+
+    <title>Mario Jump!</title>
+</head>
+<body>
+    <div class="game-board">
+        <!-- pipe -->
+        <img src="./modules/cloud/clouds.png" id="clouds" class="clouds">
+        <!-- pipe -->
+        <img src="./modules/pipe/pipe.png" id="pipe" class="pipe">
+         <!-- mario -->
+         <img src="./modules/mario/walk.gif" id="mario" class="mario">
+    </div>
+    <div class="ground">
+
+    </div>
+</body>
+</html>
+
+<script src="./modules/mario/mario.js"></script>
+<script src="./modules/pipe/pipe.js"></script>
+<script src="./resources/js/game.js"></script>
+<script defer>
+    const game = new Game();
+</script>
