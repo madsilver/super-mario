@@ -2,9 +2,9 @@ const WALK_IMG = './modules/mario/walk.gif';
 const FLY_IMG = './modules/mario/fly.gif';
 const DIE_IMG = './modules/mario/die.png';
 
-class Mario {
+class Mario extends Core {
     constructor() {
-        this.elem = document.querySelector('#mario');
+        super('mario');
         this.died = false;
 
         window.addEventListener('keydown', (e) => {
@@ -14,8 +14,6 @@ class Mario {
         });
     }
 
-    addClass(clazz) { this.elem.classList.add(clazz); }
-    removeClass(clazz) { this.elem.classList.remove(clazz); }
     setImage(img) { this.elem.src = img; }
 
     getJumpHeight() {
