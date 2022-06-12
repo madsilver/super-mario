@@ -6,7 +6,7 @@
 }
 
 .pipe-move {
-    animation: pipe-animation 2s infinite linear;
+    animation: pipe-animation 3s infinite linear;
 }
 
 @keyframes pipe-animation {

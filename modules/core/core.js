@@ -1,7 +1,9 @@
 class Core {
-    constructor(name) {
-        this.elem = document.querySelector(`#${name}`);
+    constructor(name, img) {
         this.name = name;
+        this.img = img;
+
+        this.create();
     }
 
     addClass(clazz) { 
@@ -34,5 +36,16 @@ class Core {
         const position = this.fromLeft();
         this.elem.style.left = `${position}px`;
         this.removeClass(`${this.name}-move`);
+    }
+
+    create() {
+        this.elem = document.createElement('img');
+        this.elem.id = this.name;
+        this.elem.src = `./modules/${this.name}/${this.img}`;
+        this.addClass(this.name);
+
+        const gameBoard = document.querySelector('.game-board');
+        gameBoard.appendChild(this.elem);
+
     }
 }

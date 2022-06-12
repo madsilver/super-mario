@@ -4,7 +4,8 @@ const DIE_IMG = './modules/mario/die.png';
 
 class Mario extends Core {
     constructor() {
-        super('mario');
+        super('mario', 'walk.gif');
+
         this.died = false;
 
         window.addEventListener('keydown', (e) => {

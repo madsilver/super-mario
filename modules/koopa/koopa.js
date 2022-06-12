@@ -1,5 +1,5 @@
-class Koopa {
+class Koopa extends Core {
     constructor() {
-        this.elem = document.querySelector('#koopa');
+        super('koopa', 'koopa.webp');
     }
 }

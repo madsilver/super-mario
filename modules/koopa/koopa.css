@@ -1,0 +1,15 @@
+.koopa {
+    position: absolute;
+    bottom: 0;
+    width: 80px;
+    right: -80px;
+}
+
+.koopa-move {
+    animation: koopa-animation 1.5s infinite linear;
+}
+
+@keyframes koopa-animation {
+    from { right: -80px; }
+    to { right: 100%; }
+}

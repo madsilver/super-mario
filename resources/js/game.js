@@ -2,6 +2,8 @@ class Game {
     constructor() {
         this.pipe = new Pipe();
         this.mario = new Mario();
+        this.koopa = new Koopa();
+
         this.thread = null;
 
         window.addEventListener('keypress', (e) => {
@@ -15,6 +17,7 @@ class Game {
     endGame() {
         this.mario.die();
         this.pipe.stop();
+        this.koopa.stop();
         
         clearInterval(this.thread);
     }
@@ -23,6 +26,11 @@ class Game {
         if (this.pipe.scoreZone()) {
             return this.mario.getJumpHeight() <= this.pipe.getHeight();
         }
+
+        if (this.koopa.scoreZone()) {
+            return this.mario.getJumpHeight() <= this.koopa.getHeight();
+        }
+
         return false;
     }
 
@@ -31,6 +39,7 @@ class Game {
         this.mario.reset();
 
         this.pipe.move();
+        this.koopa.move();
 
         this.thread = setInterval(() => {
             if (this.touchedPipe()) {
