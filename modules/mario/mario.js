@@ -5,43 +5,52 @@ const DIE_IMG = './modules/mario/die.png';
 class Mario {
     constructor() {
         this.elem = document.querySelector('#mario');
-        this.loose = false;
+        this.died = false;
 
-        window.addEventListener('keydown', () =>  this.jump());
+        window.addEventListener('keydown', (e) => {
+            if (e.key == "ArrowUp") {
+                this.jump();
+            }
+        });
     }
+
+    addClass(clazz) { this.elem.classList.add(clazz); }
+    removeClass(clazz) { this.elem.classList.remove(clazz); }
+    setImage(img) { this.elem.src = img; }
 
     getJumpHeight() {
         return +window.getComputedStyle(this.elem).bottom.replace('px','');
     }
 
+    walk() {
+        this.removeClass('die');
+        this.addClass('walk');
+        this.setImage(WALK_IMG);
+    }
+
     jump() {
-        this.elem.classList.add('jump');
-        this.elem.src = FLY_IMG;
+        if (this.died) return;
+        this.addClass('jump');
+        this.setImage(FLY_IMG);
         setTimeout(() => {
-            if (this.loose) return;
-            this.elem.classList.remove('jump');
-            this.elem.src = WALK_IMG;
+            if (this.died) return;
+            this.removeClass('jump');
+            this.setImage(WALK_IMG);
         }, 500);
     }
 
     die() {
-        this.loose = true;
-        this.elem.classList.remove('jump');
+        this.died = true;
+        this.addClass('die');
+        this.setImage(DIE_IMG);
         const jumpHeight = this.getJumpHeight();
-
         this.elem.style.bottom = `${jumpHeight}px`;
-        this.elem.src = DIE_IMG;
-        this.elem.style.width = '75px';
-        this.elem.style.marginLeft = '50px';
+        this.removeClass('jump');
     }
 
     reset() {
-        this.loose = false;
-
-        this.elem.classList.remove('jump');
-        this.elem.style.width = '150px';
-        this.elem.style.marginLeft = '0px';
+        this.died = false;
         this.elem.style.bottom = '0px';
-        this.elem.src = WALK_IMG;
+        this.walk();
     }
 }

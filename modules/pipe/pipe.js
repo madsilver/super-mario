@@ -3,6 +3,9 @@ class Pipe {
         this.elem = document.querySelector('#pipe');
     }
 
+    addClass(clazz) { this.elem.classList.add(clazz); }
+    removeClass(clazz) { this.elem.classList.remove(clazz); }
+
     getPosition() {
         return this.elem.offsetLeft;
     }
@@ -19,12 +22,12 @@ class Pipe {
 
     move() {
         this.elem.style.left = null;
-        this.elem.classList.add('pipe-move');
+        this.addClass('pipe-move');
     }
 
     stop() {
         const position = this.getPosition();
         this.elem.style.left = `${position}px`;
-        this.elem.classList.remove('pipe-move');
+        this.removeClass('pipe-move');
     }
 }

@@ -1,12 +1,21 @@
 .mario {
-    width: 150px;
     position: absolute;
-    bottom: 0;
+    bottom: 0px;
+    width: 150px;
+}
+
+.walk {
+    width: 150px;
 }
 
 .jump {
     animation: jump-animation 500ms ease-out;
     width: 120px;
+}
+
+.die {
+    margin-left: 50px;
+    width: 75px;
 }
 
 @keyframes jump-animation {

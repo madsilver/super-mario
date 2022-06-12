@@ -5,7 +5,7 @@ class Game {
         this.thread = null;
 
         window.addEventListener('keypress', (e) => {
-            if (e.keyCode === 13 || e.which === 13) {
+            if (e.key == "Enter") {
                 e.preventDefault();
                 this.start();
             }
@@ -17,12 +17,11 @@ class Game {
         this.pipe.stop();
         
         clearInterval(this.thread);
-        console.log(this.mario.getJumpHeight());
     }
 
     touchedPipe() {
         if (this.pipe.scoreZone()) {
-            return this.mario.getJumpHeight() < this.pipe.getHeight();
+            return this.mario.getJumpHeight() <= this.pipe.getHeight();
         }
         return false;
     }

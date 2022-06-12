@@ -36,14 +36,14 @@ body {
     font-weight: bold;
 }
 
-.btn-panel {
-    flex-wrap: wrap;
+.wrap {
+    display: flex;
 }
-.btn {
-    flex:content;
-    width: 100px;
-    height: 30px;
-    cursor: pointer;
+.box {
+    margin: 10px 20px;
+    width: 200px;
+    height: 200px;
+    padding: 10px;
 }
 
 
