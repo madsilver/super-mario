@@ -15,7 +15,7 @@ class Game {
             }
         });
 
-        window.addEventListener('mario-arrived', () => {
+        window.addEventListener('player-arrived', () => {
             if (this.player.isScoreZone()) {
                 this.scoreInc();
             }

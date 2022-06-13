@@ -1,4 +1,5 @@
 .clouds {
+    top:20px;
     width: 450px;
     position: absolute;
     animation: clouds-animation 50s infinite linear;

@@ -14,10 +14,10 @@ class Mario extends Core {
                 this.jump();
             }
             if (e.key == "ArrowRight") {
-                this.move(true);
+                this.playerMove(true);
             }
             if (e.key == "ArrowLeft") {
-                this.move(false);
+                this.playerMove(false);
             }
         });
     }
@@ -34,7 +34,7 @@ class Mario extends Core {
         this.setImage(WALK_IMG);
     }
 
-    move(dir) {
+    playerMove(dir) {
         if (this.elem.style.left == '') {
             this.elem.style.left = '10px';
             return;
@@ -78,7 +78,7 @@ class Mario extends Core {
 
     emitArrivedEvent() {
         const event = document.createEvent('Event');
-        event.initEvent('mario-arrived', true, true);
+        event.initEvent('player-arrived', true, true);
         window.dispatchEvent(event);
     }
 

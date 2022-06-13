@@ -29,13 +29,11 @@ class Core {
 
     move() {
         this.elem.style.left = null;
-
         const ms = Math.floor((Math.random() * 5) +1) * 1000;
 
         setTimeout(() => { 
             this.addClass(`${this.name}-move`);
         }, ms);
-        
     }
 
     stop() {
