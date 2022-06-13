@@ -1,7 +1,7 @@
-@import "../../modules/cloud/clouds.css";
-@import "../../modules/mario/mario.css";
-@import "../../modules/pipe/pipe.css";
-@import "../../modules/koopa/koopa.css";
+@import "./clouds.css";
+@import "./mario.css";
+@import "./pipe.css";
+@import "./koopa.css";
 
 * {
     margin: 0;

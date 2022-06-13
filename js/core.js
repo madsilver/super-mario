@@ -47,7 +47,7 @@ class Core {
     create() {
         this.elem = document.createElement('img');
         this.elem.id = this.name;
-        this.elem.src = `./modules/${this.name}/${this.img}`;
+        this.elem.src = `./images/${this.img}`;
         this.addClass(this.name);
 
         const gameBoard = document.querySelector('.game-board');

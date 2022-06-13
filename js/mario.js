@@ -1,10 +1,10 @@
-const WALK_IMG = './modules/mario/walk.gif';
-const FLY_IMG = './modules/mario/fly.gif';
-const DIE_IMG = './modules/mario/die.png';
+const WALK_IMG = './images/mario/walk.gif';
+const FLY_IMG = './images/mario/fly.gif';
+const DIE_IMG = './images/mario/die.png';
 
 class Mario extends Core {
     constructor() {
-        super('mario', 'walk.gif');
+        super('mario', '/mario/walk.gif');
 
         this.died = false;
         this.scoreZone = false;
