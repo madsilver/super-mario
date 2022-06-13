@@ -7,10 +7,17 @@ class Mario extends Core {
         super('mario', 'walk.gif');
 
         this.died = false;
+        this.scoreZone = false;
 
         window.addEventListener('keydown', (e) => {
             if (e.key == "ArrowUp") {
                 this.jump();
+            }
+            if (e.key == "ArrowRight") {
+                this.move(true);
+            }
+            if (e.key == "ArrowLeft") {
+                this.move(false);
             }
         });
     }
@@ -27,6 +34,21 @@ class Mario extends Core {
         this.setImage(WALK_IMG);
     }
 
+    move(dir) {
+        if (this.elem.style.left == '') {
+            this.elem.style.left = '10px';
+            return;
+        }
+
+        var val = this.elem.style.left.replace('px','');
+        if (dir) {
+            val = +val + 10;
+        } else {
+            val = +val - 10;
+        }
+        this.elem.style.left = `${val}px`;
+    }
+
     jump() {
         if (this.died) return;
         this.addClass('jump');
@@ -35,8 +57,7 @@ class Mario extends Core {
             if (this.died) return;
             this.removeClass('jump');
             this.setImage(WALK_IMG);
-
-            this.emitScoreEvent();
+            this.emitArrivedEvent();
         }, 500);
     }
 
@@ -55,9 +76,17 @@ class Mario extends Core {
         this.walk();
     }
 
-    emitScoreEvent() {
+    emitArrivedEvent() {
         const event = document.createEvent('Event');
-        event.initEvent('score', true, true);
+        event.initEvent('mario-arrived', true, true);
         window.dispatchEvent(event);
+    }
+
+    setScoreZone(val) {
+        this.scoreZone = val;
+    }
+
+    isScoreZone() {
+        return this.scoreZone;
     }
 }

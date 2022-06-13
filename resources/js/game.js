@@ -15,8 +15,11 @@ class Game {
             }
         });
 
-        window.addEventListener('score', () => {
-            this.scoreInc();
+        window.addEventListener('mario-arrived', () => {
+            if (this.mario.isScoreZone()) {
+                this.scoreInc();
+            }
+            this.mario.setScoreZone(false);
         });
 
         this.score = document.querySelector('.score');
@@ -30,8 +33,9 @@ class Game {
     hasTouched() {
         var touched = false;
 
-        this.enemies.forEach((enemie) => {
+        this.enemies.forEach((enemie) => {           
             if (enemie.scoreZone()) {
+                this.mario.setScoreZone(true);
                 touched = this.mario.getJumpHeight() <= enemie.getHeight();
             }
         });
