@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
 
-    <title>Mario Jump!</title>
+    <title>Mario & Sonic</title>
 </head>
 <body>
     <div class="game-board">
@@ -23,9 +23,11 @@
 <script src="./js/core/core.js"></script>
 <script src="./js/core/player.js"></script>
 <script src="./js/mario.js"></script>
+<script src="./js/sonic.js"></script>
 <script src="./js/pipe.js"></script>
 <script src="./js/koopa.js"></script>
 <script src="./js/game.js"></script>
 <script defer>
     const game = new Game();
+    game.setPlayer(new Sonic());
 </script>

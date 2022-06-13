@@ -6,23 +6,12 @@ class Game {
             new Koopa()
         ];
 
-        this.player = new Mario();
-
-        window.addEventListener('keypress', (e) => {
-            if (e.key == "Enter") {
-                e.preventDefault();
-                this.start();
-            }
-        });
-
-        window.addEventListener('player-arrived', () => {
-            if (this.player.isScoreZone()) {
-                this.scoreInc();
-            }
-            this.player.setScoreZone(false);
-        });
-
         this.score = document.querySelector('.score');
+        this.handleEvents();
+    }
+
+    setPlayer(player) {
+        this.player = player;
     }
 
     endGame() {
@@ -59,5 +48,21 @@ class Game {
     scoreInc() {
         var val = +this.score.innerHTML;
         this.score.innerHTML = ++val;
+    }
+
+    handleEvents() {
+        window.addEventListener('keypress', (e) => {
+            if (e.key == "Enter") {
+                e.preventDefault();
+                this.start();
+            }
+        });
+
+        window.addEventListener('player-arrived', () => {
+            if (this.player.isScoreZone()) {
+                this.scoreInc();
+            }
+            this.player.setScoreZone(false);
+        });
     }
 }

@@ -7,11 +7,13 @@ class Core {
     }
 
     addClass(clazz) { 
-        this.elem.classList.add(clazz); 
+        const elemClass = `${this.name}-${clazz}`;
+        this.elem.classList.add(elemClass); 
     }
 
     removeClass(clazz) { 
-        this.elem.classList.remove(clazz); 
+        const elemClass = `${this.name}-${clazz}`;
+        this.elem.classList.remove(elemClass); 
     }
     
     getHeight() {
@@ -32,21 +34,21 @@ class Core {
         const ms = Math.floor((Math.random() * 5) +1) * 1000;
 
         setTimeout(() => { 
-            this.addClass(`${this.name}-move`);
+            this.addClass('move');
         }, ms);
     }
 
     stop() {
         const position = this.fromLeft();
         this.elem.style.left = `${position}px`;
-        this.removeClass(`${this.name}-move`);
+        this.removeClass('move');
     }
 
     create() {
         this.elem = document.createElement('img');
         this.elem.id = this.name;
         this.elem.src = `./images/${this.img}`;
-        this.addClass(this.name);
+        this.addClass('idle');
 
         const gameBoard = document.querySelector('.game-board');
         gameBoard.appendChild(this.elem);

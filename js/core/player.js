@@ -1,14 +1,10 @@
 class Player extends Core {
     constructor(name, img) {
-        super(name, `/${name}/${img}`);
+        super(name, img.idle);
 
+        this.img = img;
         this.died = false;
         this.scoreZone = false;
-        this.img = {
-            walk: `./images/${name}/walk.gif`,
-            jump: `./images/${name}/jump.gif`,
-            die: `./images/${name}/die.png`
-        };
 
         window.addEventListener('keydown', (e) => {
             if (e.key == "ArrowUp") {
@@ -23,7 +19,7 @@ class Player extends Core {
         });
     }
 
-    setImage(img) { this.elem.src = img; }
+    setImage(img) { this.elem.src = `./images/${img}`; }
 
     getJumpHeight() {
         return +window.getComputedStyle(this.elem).bottom.replace('px','');
@@ -69,6 +65,7 @@ class Player extends Core {
         const jumpHeight = this.getJumpHeight();
         this.elem.style.bottom = `${jumpHeight}px`;
         this.removeClass('jump');
+        this.removeClass('walk');
     }
 
     reboot() {

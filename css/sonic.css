@@ -1,24 +1,19 @@
-#mario {
+#sonic {
     position: absolute;
     bottom: 0px;
 }
 
-.mario-idle {
-    width: 150px;
+.sonic-idle {
+    width: 140px;
 }
 
-.mario-walk {
-    width: 150px;
-}
-
-.mario-jump {
+.sonic-jump {
     animation: jump-animation 500ms ease-out;
-    width: 120px;
+    width: 110px;
 }
 
-.mario-die {
-    margin-left: 50px;
-    width: 75px;
+.sonic-die {
+    width: 150px;
 }
 
 @keyframes jump-animation {
