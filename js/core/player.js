@@ -1,23 +1,24 @@
-const WALK_IMG = './modules/mario/walk.gif';
-const FLY_IMG = './modules/mario/fly.gif';
-const DIE_IMG = './modules/mario/die.png';
-
-class Mario extends Core {
-    constructor() {
-        super('mario', 'walk.gif');
+class Player extends Core {
+    constructor(name, img) {
+        super(name, `/${name}/${img}`);
 
         this.died = false;
         this.scoreZone = false;
+        this.img = {
+            walk: `./images/${name}/walk.gif`,
+            jump: `./images/${name}/jump.gif`,
+            die: `./images/${name}/die.png`
+        };
 
         window.addEventListener('keydown', (e) => {
             if (e.key == "ArrowUp") {
                 this.jump();
             }
             if (e.key == "ArrowRight") {
-                this.move(true);
+                this.playerMove(true);
             }
             if (e.key == "ArrowLeft") {
-                this.move(false);
+                this.playerMove(false);
             }
         });
     }
@@ -31,10 +32,10 @@ class Mario extends Core {
     walk() {
         this.removeClass('die');
         this.addClass('walk');
-        this.setImage(WALK_IMG);
+        this.setImage(this.img.walk);
     }
 
-    move(dir) {
+    playerMove(dir) {
         if (this.elem.style.left == '') {
             this.elem.style.left = '10px';
             return;
@@ -52,11 +53,11 @@ class Mario extends Core {
     jump() {
         if (this.died) return;
         this.addClass('jump');
-        this.setImage(FLY_IMG);
+        this.setImage(this.img.jump);
         setTimeout(() => {
             if (this.died) return;
             this.removeClass('jump');
-            this.setImage(WALK_IMG);
+            this.setImage(this.img.walk);
             this.emitArrivedEvent();
         }, 500);
     }
@@ -64,7 +65,7 @@ class Mario extends Core {
     die() {
         this.died = true;
         this.addClass('die');
-        this.setImage(DIE_IMG);
+        this.setImage(this.img.die);
         const jumpHeight = this.getJumpHeight();
         this.elem.style.bottom = `${jumpHeight}px`;
         this.removeClass('jump');
@@ -78,7 +79,7 @@ class Mario extends Core {
 
     emitArrivedEvent() {
         const event = document.createEvent('Event');
-        event.initEvent('mario-arrived', true, true);
+        event.initEvent('player-arrived', true, true);
         window.dispatchEvent(event);
     }
 

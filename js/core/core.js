@@ -29,13 +29,11 @@ class Core {
 
     move() {
         this.elem.style.left = null;
-
         const ms = Math.floor((Math.random() * 5) +1) * 1000;
 
         setTimeout(() => { 
             this.addClass(`${this.name}-move`);
         }, ms);
-        
     }
 
     stop() {
@@ -47,7 +45,7 @@ class Core {
     create() {
         this.elem = document.createElement('img');
         this.elem.id = this.name;
-        this.elem.src = `./modules/${this.name}/${this.img}`;
+        this.elem.src = `./images/${this.img}`;
         this.addClass(this.name);
 
         const gameBoard = document.querySelector('.game-board');

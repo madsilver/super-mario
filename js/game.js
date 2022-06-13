@@ -6,7 +6,7 @@ class Game {
             new Koopa()
         ];
 
-        this.mario = new Mario();
+        this.player = new Mario();
 
         window.addEventListener('keypress', (e) => {
             if (e.key == "Enter") {
@@ -15,18 +15,18 @@ class Game {
             }
         });
 
-        window.addEventListener('mario-arrived', () => {
-            if (this.mario.isScoreZone()) {
+        window.addEventListener('player-arrived', () => {
+            if (this.player.isScoreZone()) {
                 this.scoreInc();
             }
-            this.mario.setScoreZone(false);
+            this.player.setScoreZone(false);
         });
 
         this.score = document.querySelector('.score');
     }
 
     endGame() {
-        this.mario.die();
+        this.player.die();
         this.enemies.forEach(enemie => enemie.stop());        
     }
 
@@ -35,8 +35,8 @@ class Game {
 
         this.enemies.forEach((enemie) => {           
             if (enemie.scoreZone()) {
-                this.mario.setScoreZone(true);
-                touched = this.mario.getJumpHeight() <= enemie.getHeight();
+                this.player.setScoreZone(true);
+                touched = this.player.getJumpHeight() <= enemie.getHeight();
             }
         });
 
@@ -44,7 +44,7 @@ class Game {
     }
 
     start() {
-        this.mario.reboot();
+        this.player.reboot();
         this.score.innerHTML = 0;
         this.enemies.forEach(enemie => enemie.move());
 
