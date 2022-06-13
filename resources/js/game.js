@@ -4,7 +4,7 @@ class Game {
             new Pipe(),
             new Pipe(),
             new Koopa()
-        ]
+        ];
 
         this.mario = new Mario();
 
@@ -14,6 +14,12 @@ class Game {
                 this.start();
             }
         });
+
+        window.addEventListener('score', () => {
+            this.scoreInc();
+        });
+
+        this.score = document.querySelector('.score');
     }
 
     endGame() {
@@ -35,7 +41,7 @@ class Game {
 
     start() {
         this.mario.reboot();
-
+        this.score.innerHTML = 0;
         this.enemies.forEach(enemie => enemie.move());
 
         const loop = setInterval(() => {
@@ -44,5 +50,10 @@ class Game {
                 clearInterval(loop);
             }
         }, 10);
+    }
+
+    scoreInc() {
+        var val = +this.score.innerHTML;
+        this.score.innerHTML = ++val;
     }
 }

@@ -30,11 +30,11 @@ class Core {
     move() {
         this.elem.style.left = null;
 
-        const sec = Math.floor((Math.random() * 5) +1);
+        const ms = Math.floor((Math.random() * 5) +1) * 1000;
 
         setTimeout(() => { 
             this.addClass(`${this.name}-move`);
-        }, sec * 1000);
+        }, ms);
         
     }
 

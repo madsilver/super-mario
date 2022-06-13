@@ -29,17 +29,17 @@ body {
 }
 
 .score {
-    position: absolute;
-    left: 40px;
-    top: 10px;
-    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 80px;
     font-weight: bold;
+    margin: 40px 0 0 80px;
+    color: #fff;
 }
 
 .wrap {
     display: flex;
 }
+
 .box {
     margin: 10px 20px;
     width: 200px;

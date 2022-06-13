@@ -35,6 +35,8 @@ class Mario extends Core {
             if (this.died) return;
             this.removeClass('jump');
             this.setImage(WALK_IMG);
+
+            this.emitScoreEvent();
         }, 500);
     }
 
@@ -51,5 +53,11 @@ class Mario extends Core {
         this.died = false;
         this.elem.style.bottom = '0px';
         this.walk();
+    }
+
+    emitScoreEvent() {
+        const event = document.createEvent('Event');
+        event.initEvent('score', true, true);
+        window.dispatchEvent(event);
     }
 }
