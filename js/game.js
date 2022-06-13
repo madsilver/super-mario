@@ -11,7 +11,15 @@ class Game {
     }
 
     setPlayer(player) {
+        if (this.player) {
+            this.player.destroy();
+        }
         this.player = player;
+    }
+
+    destroy(elem) {
+        const gameBoard = document.querySelector('.game-board');
+        gameBoard.removeChild(elem);
     }
 
     endGame() {

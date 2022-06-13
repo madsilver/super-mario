@@ -12,9 +12,11 @@
     <div class="game-board">
         <img src="./images/clouds.png" id="clouds" class="clouds">
     </div>
+    <div class="score">0</div> 
     <div class="ground">
         <div class="wrap">
-            <div class="score">0</div>  
+             <button class="btn" onclick="choosePlayer('mario')">MARIO</button>
+             <button class="btn" onclick="choosePlayer('sonic')">SONIC</button>
         </div>
     </div>
 </body>
@@ -29,5 +31,14 @@
 <script src="./js/game.js"></script>
 <script defer>
     const game = new Game();
-    game.setPlayer(new Sonic());
+
+    const choosePlayer = (player) => {
+        if (player == 'mario') {
+            game.setPlayer(new Mario());
+        }
+
+        if (player == 'sonic') {
+            game.setPlayer(new Sonic());
+        }
+    }
 </script>

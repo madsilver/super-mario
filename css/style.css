@@ -31,22 +31,27 @@ body {
 
 .score {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 120px;
+    font-size: 80px;
     font-weight: bold;
     font-style: italic;
     margin: 40px 0 0 80px;
-    color: #fff;
+    position: absolute;
+    top: 20px;
 }
 
 .wrap {
     display: flex;
 }
 
-.box {
-    margin: 10px 20px;
-    width: 200px;
-    height: 200px;
-    padding: 10px;
+.btn {
+    margin: 10px;
+    width: 150px;
+    height: 50px;
+    color: #fff;
+    background: #000;
+    font-family: 'Courier New', Courier, monospace, 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
 }
 
 

@@ -54,4 +54,9 @@ class Core {
         gameBoard.appendChild(this.elem);
 
     }
+
+    destroy() {
+        const gameBoard = document.querySelector('.game-board');
+        gameBoard.removeChild(this.elem);
+    }
 }
